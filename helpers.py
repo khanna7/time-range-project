@@ -14,9 +14,21 @@ def timerange_to_minutes(t_str):
 
     return hours_to_minutes + minutes
 
+def minutes_to_timerange_str(m):
+    """
+    (not the solution shown in the video)
+    Return a timerange str in format HH:MM for a given integer
+    :param m: integer representing minutes
+    :return: formatted time string
+    m = 90 -> 01:30 
+    """
+    hh, mm = divmod(m, 60)
+    return f"{hh:02d}:{mm:02d}"
 
-def prettify_available_minutes():
-    l = [0, 1, 2, 35, 46, 47, 60, 61, 62]
+
+
+def prettify_available_minutes(l:list):
+
     grouped_list = [] #nested list
     list_resettable = []
 
@@ -33,11 +45,19 @@ def prettify_available_minutes():
             list_resettable.clear()
             list_resettable.append(element)
 
-        if list_resettable: #equivalent to if len(list_resettable) > 0, i.e., checking that list is non-empty
-            grouped_list.append(list_resettable)
+    if list_resettable:
+        grouped_list.append(list_resettable)
+
+    time_ranges = []
+    for group in grouped_list:
+        start_time = minutes_to_timerange_str(m=group[0])
+        end_time = minutes_to_timerange_str(m=group[-1])
+        time_range_str = f"{start_time} - {end_time}"
+        time_ranges.append(time_range_str)
+
+    return time_ranges
 
 
-    print(grouped_list)
+    
 
 
-prettify_available_minutes()
