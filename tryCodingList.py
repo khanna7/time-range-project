@@ -15,10 +15,7 @@ def create_sorted_list():
     #print(range(len(l)))
 
     for e in l:
-       if not small_list:
-           small_list.append(e)
-
-       elif small_list[-1] + 1 == e:
+       if not small_list or small_list[-1] + 1 == e:
            small_list.append(e)
        
        elif small_list[-1] + 1 != e:
