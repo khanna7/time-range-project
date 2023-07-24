@@ -14,16 +14,16 @@ def create_sorted_list():
 
     #print(range(len(l)))
 
-    for e in range(len(l)):
-       if small_list == []:
-           small_list.append(l[e])
+    for e in l:
+       if not small_list:
+           small_list.append(e)
 
-       elif small_list[-1] + 1 == l[e]:
-           small_list.append(l[e])
+       elif small_list[-1] + 1 == e:
+           small_list.append(e)
        
-       elif small_list[-1] + 1 != l[e]:
+       elif small_list[-1] + 1 != e:
            big_list.append(small_list[:])
-           small_list = [l[e]]
+           small_list = [e]
 
     if small_list:
             big_list.append(small_list[:])
